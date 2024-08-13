@@ -7,6 +7,7 @@ from concurrent.futures import ThreadPoolExecutor
 def run(n):
     """ 线程要做的事 """
     time.sleep(2)
+    print(f'线程状态：{threading.current_thread().daemon}')
     print(threading.current_thread().name, n)
     return n
 
@@ -45,8 +46,8 @@ def main_use_pool():
     res = pool.map(run, thread_list)  # run：处理数据需要做的事情；thread_list：需要线程处理的数据，需要执行的线程数
     print('pool模块执行之后')
     print('res =>', res)
-    pool.close()  # 关闭线程池，防止继续往线程池中添加任务
-    pool.join()  # 阻塞主线程，等待子线程完成再运行
+    # pool.close()  # 关闭线程池，防止继续往线程池中添加任务
+    # pool.join()  # 阻塞主线程，等待子线程完成再运行
     print('结束代码')
 
 
