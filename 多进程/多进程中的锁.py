@@ -24,7 +24,9 @@ def create_process():
         p = Process(target=run, args=(i, lock))
         p.start()
         ls.append(p)
+    # 注意：其实主要join住的是最长的子进程，如果第一个子进程的执行时间最长，则其实后续的都还没有运行至join这一步。
     for process in ls:
+        print('join')
         process.join()
 
 
