@@ -37,5 +37,5 @@ def create_daemon_thread():
 
 
 if __name__ == '__main__':
-    # create_daemon()
-    create_daemon_thread()
+    create_daemon() # 守护进程
+    # create_daemon_thread() # 守护线程

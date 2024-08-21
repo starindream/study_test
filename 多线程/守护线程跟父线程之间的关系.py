@@ -24,6 +24,6 @@ def children_thread():
 if __name__ == '__main__':
     t = threading.Thread(target=children_thread)
     t.start()
-    t.join()
+    # t.join()
     print('children线程结束')
     time.sleep(30)

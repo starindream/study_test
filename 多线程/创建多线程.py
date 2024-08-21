@@ -31,9 +31,11 @@ def task(thread_name, number, letter):
 if __name__ == '__main__':
     thread_one = MyThread(4, 'a')
     thread_two = MyThread(3, 'b')
+    thread_one.daemon = True
     thread_one.start()
+    thread_two.daemon = True
     thread_two.start()
     print('join')
-    thread_one.join()
-    thread_two.join()
+    # thread_one.join()
+    # thread_two.join()
     print('join 之后')
