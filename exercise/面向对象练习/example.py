@@ -16,7 +16,7 @@ class Student:
                 's_number': random.randint(1, 10000)
             }
             self.students.append(info)
-
+            
 
 class CourseInfo:
     """
