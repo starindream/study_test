@@ -26,3 +26,5 @@ print(redis.get('book'))
 redis.execute_command('SET', 'video', '西游1记')
 
 print(redis.execute_command('GET', 'video'))
+
+redis.close()

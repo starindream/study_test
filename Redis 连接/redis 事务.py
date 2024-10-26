@@ -22,4 +22,12 @@ pip.set('book2', 'book2')
 pip.get('book1')
 pip.get('book2')
 result = pip.execute()
+pip.reset()
 print(result)
+
+# 监听值改变
+pip.watch('book1')
+redis_client.set('book1', 00)
+pip.multi()
+pip.set('book1', 3)
+pip.execute()

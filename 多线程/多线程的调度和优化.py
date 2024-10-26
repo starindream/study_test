@@ -1,3 +1,4 @@
+import multiprocessing.dummy
 import threading
 import time
 from multiprocessing.dummy import Pool
@@ -40,7 +41,7 @@ def main_use_thread():
 
 # 使用进程模块中的线程池
 def main_use_pool():
-    pool = Pool(10)
+    pool = multiprocessing.dummy.Pool(10)
     thread_list = range(100)  # 多个线程需要处理的数据，即有指定需要多少个线程来进行处理
     print('pool模块执行之前')
     res = pool.map(run, thread_list)  # run：处理数据需要做的事情；thread_list：需要线程处理的数据，需要执行的线程数
@@ -55,13 +56,43 @@ def main_use_executor():
     pool = ThreadPoolExecutor(max_workers=10)
     thread_list = range(100)
     result = pool.map(run, thread_list)
-    pool.shutdown(wait=True)
+    # pool.shutdown(wait=True)
+    print('result=>', result)
     print('结束代码')
+
+
+# 使用 ThreadExecutor 的 with 方式来创建线程
+def main_use_executor_with():
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        thread_list = range(100)
+        result = executor.map(run, thread_list)
+        print(result)
+    # 线程结束后，获取result
+    # for one in result:
+    #     print('one', one)
+
+
+# for 循环阻塞主线程，且executor返回的迭代器中的顺序跟传入的urls的顺序一致，不会受线程的结束时间而影响，导致的重新排序。
+def test():
+    # 参数times用来模拟网络请求时间
+    def get_html(times):
+        time.sleep(times)
+        print("get page {}s finished".format(times))
+        return times
+
+    executor = ThreadPoolExecutor(max_workers=2)
+    urls = [3, 2, 4]
+    result = executor.map(get_html, urls)
+    print(result)
+    for data in result:
+        print("in main:get page {}s success".format(data))
 
 
 if __name__ == '__main__':
     # main()
     # main_use_thread()
     # main_use_pool()
-    main_use_executor()
+    # main_use_executor()
+    # test()
+    main_use_executor_with()
     print('主线程结束')
