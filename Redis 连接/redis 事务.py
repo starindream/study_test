@@ -8,9 +8,10 @@ config = {
     'db': 0
 }
 
-# 创建连接池
+# 创建连接池，将连接信息进行保存
 redis_pool = redis.ConnectionPool(**config)
 # 创建redis实例，每个redis 实例内部都会维护一个自己的连接池，在execute_command 方法中会创建连接，并保留此次创建的连接
+# 主要实现从连接池中获取信息，用来创建连接，并在建立连接后，会将创立的连接保留至下次使用
 redis_client = redis.Redis(connection_pool=redis_pool)
 
 # 定义一个管道，将所有的命令都存放在管道中

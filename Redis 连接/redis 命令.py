@@ -41,9 +41,10 @@ redis_client.execute_command('SELECT', 1)
 # print(redis_client.zrevrange('sort', 0, -1, withscores=True))
 
 # 哈希表
-# print(redis_client.hset('test', 'one', 'one'))
-# print(redis_client.hset('test', mapping={'yyy': 'yyy', '222': '222'}))
-# print(redis_client.hmget('test', ['one', 'yyy', '222']))
+print(redis_client.hset('test', 'one', 'one'))
+print(redis_client.hset('test', mapping={'yyy': 'yyy', '222': '222'}))
+print(redis_client.hmget('test', ['one', 'yyy', '222']))
+print('hgetall', redis_client.hgetall('test'))
 
 # 消息队列
 print(redis_client.delete('mes'))
