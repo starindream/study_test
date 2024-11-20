@@ -17,6 +17,7 @@ def main():
     result = as_completed(futures)
     for i in result:
         print(i)
+        print('结果:', i.result())
 
 
 if __name__ == '__main__':

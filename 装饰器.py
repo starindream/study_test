@@ -5,7 +5,6 @@ from functools import wraps
 time_start = time.time()
 
 
-
 def log(func):
     print('log')
 
@@ -49,8 +48,8 @@ def test():
 
 
 if __name__ == '__main__':
-    print(os.environ)
+    # print(os.environ)
     # test()
-    print(test.__doc__)
-    print('结束时间',time.time()-time_start)
-1
+    # print(test.__doc__)
+    # print('结束时间',time.time()-time_start)
+    test()

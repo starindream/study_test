@@ -46,7 +46,7 @@ async def run(id):
 
 
 async def main():
-    # 创建线程池。错误：使用线程时，当发生任务阻塞，线程会将任务挂起，等待任务结束，当100用户抢购时，无法实现100位用户的并发问题
+    # 创建线程池。错误：使用线程时，当发生任务阻塞，线程会将任务挂起，等待任务结束，当100用户抢购时，无法实现100位用户的并发问题,当线程数量为20时，
     # with ThreadPoolExecutor(max_workers=100) as executor:
     #     thread_list = list(range(100))
     #     executor.map(run, thread_list)

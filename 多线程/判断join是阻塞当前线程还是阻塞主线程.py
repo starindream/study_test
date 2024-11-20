@@ -24,6 +24,7 @@ def parent_main(n):
         thread.start()
         thread.join()
 
+
 # 使用原生的thread模块
 def use_thread():
     time_start = time.time()
