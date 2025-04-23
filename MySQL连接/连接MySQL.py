@@ -1,16 +1,15 @@
 import mysql.connector
 
-db = mysql.connector.connect(host="localhost", user="root", password="a123456789", database="demo")
+con = mysql.connector.connect(
+    host="localhost", user="root", password="a123456789", database="demo")
 
-cursor = db.cursor()
+# cursor = con.cursor()
 
-sql = 'SELECT * FROM t_emp'
-cursor.execute(sql)
+# sql = 'SELECT * FROM t_emp'
+# cursor.execute(sql)
 
-cursor2 = db.cursor()
-cursor2.execute(sql)
-
-
+# cursor2 = con.cursor()
+# cursor2.execute(sql)
 
 
 # 插入多条信息
@@ -34,5 +33,14 @@ cursor2.execute(sql)
 # print('连接成功')
 # db.commit()
 
+
+def search():
+    cursor = con.cursor()
+    cursor.execute("SELECT * FROM t_emp")
+    result = cursor.fetchall()
+    print('result', result)
+
+
 if __name__ == '__main__':
-    print(db)
+    print(con)
+    search()

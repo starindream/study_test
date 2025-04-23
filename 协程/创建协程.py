@@ -43,6 +43,11 @@ async def main():
     # 方法二，传入异步函数，内部来创建task对象
     # await asyncio.gather(one(), two())
 
+    ls = [item() for item in [one, two]]
+    results = await asyncio.gather(*ls)
+    for result in results:
+        print('result', result)
+
 
 if __name__ == '__main__':
     # 为什么需要传入异步函数 main
